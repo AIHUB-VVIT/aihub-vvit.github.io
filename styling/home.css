@@ -1,62 +1,46 @@
-.main_content {
-    height: 100vh;
-    display: flex;
-    overflow: hidden;
-}
-
-.visitor-count {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #2196F3;
-    color: white;
-    padding: 12px 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    z-index: 9999;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    border: 2px solid #1976D2;
-}
-
-#visitorCount {
-    display: block !important;
-    visibility: visible !important;
-}
-
-.visitor-count:hover {
-    background-color: #1976D2;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.visitor-count::before {
-    content: '👥';
-    margin-right: 8px;
-    font-size: 18px;
-}
-
-
+/* Make sure these styles don't conflict with the background */
 body {
+    font-family: 'Lora', serif;
+    margin: 0;
+    padding: 0;
+    position: relative; /* Important for z-index stacking */
+    min-height: 100vh;
+}
+
+.main_content {
+    padding-top: 70px; /* Space for fixed header */
+    padding-bottom: 70px; /* Space for fixed footer */
     position: relative;
+    z-index: 5; /* Make sure content is above background */
 }
 
+/* Maintain existing styles */
 .info {
-    padding: 5rem 3rem 5rem 3rem;
-    flex: 1;
-    background-color: rgb(240, 238, 238);
-    overflow: scroll;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative; /* Important for z-index */
+    z-index: 5; /* Above background */
+}
+.info .image {
+    display: block;
+    margin: auto;
+    width: 40ch; 
+    max-width: 100%; 
+    height: auto;
 }
 
-.info .image {
-        display: block;
-        margin: auto;
-        width: 40ch; 
-        max-width: 100%; 
-        height: auto;
+.image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    position: relative; /* For proper stacking context */
+}
+/* Override any problematic styles */
+.footer_list {
+    position: relative;
+    z-index: 10;
 }
 
 @media(max-width: 850px) {

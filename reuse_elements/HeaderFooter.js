@@ -40,7 +40,7 @@ class SpecialHeader extends HTMLElement {
                             <a class="nav-link" href="blog.html">Blogs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Meetups.html">Meetups</a>
+                            <a class="nav-link" href="Events.html">Events</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Apps.html">Apps</a>
@@ -149,10 +149,12 @@ class Links extends HTMLElement {
         `
     }
 }
-
 class SpecialFooter extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
+        <div class="bg-circle-container">
+            <div class="bg-circle"></div>
+        </div>
         <nav class="navbar navbar-expand-lg fixed-bottom bg-body-tertiary">
             <div class="container-fluid" id="footer">
                 <ul style="list-style: none;display:flex; justify-content: center;">
@@ -168,6 +170,8 @@ class SpecialFooter extends HTMLElement {
                 margin: 0 15px;
                 display: flex;
                 align-items: center;
+                position: relative;
+                z-index: 10;
             }
             
             .desc_item i {
@@ -177,6 +181,7 @@ class SpecialFooter extends HTMLElement {
             .desc_item a {
                 text-decoration: none;
                 color: inherit;
+                transition: color 0.3s ease;
             }
             
             .desc_item a:hover {
@@ -186,18 +191,168 @@ class SpecialFooter extends HTMLElement {
             #footer {
                 justify-content: center;
                 padding: 10px 0;
+                position: relative;
+                z-index: 10;
+                background-color: rgba(248, 249, 250, 0.85);
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
             }
             
+            .bg-circle-container {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: -1;
+                overflow: hidden;
+            }
+            
+            .bg-circle {
+                position: absolute;
+                bottom: -21.45%;
+                right: -12%;
+                width: 41.5vw;
+                height: 45vw;
+                border-radius: 50%;
+                background-image: url('./images/ch.jpg');
+                background-size: cover;
+                background-position: center;
+                opacity: 0.15;
+                z-index: -1;
+                box-shadow: 0 0 30px rgba(255, 255, 255, 0.15), inset 0 0 60px rgba(0, 0, 0, 0.1);
+                filter: saturate(1.2);
+                /* Animation removed */
+                transform: none;
+            }
+            
+            /* Interactive states */
+            .navbar.fixed-bottom:hover ~ .bg-circle-container .bg-circle {
+                opacity: 0.25;
+                filter: saturate(1.5) brightness(1.1);
+            }
+            
+            /* Ensure content overlays background */
+            .card, .container, .project-card, .app-card, .blog-card, section, article, main {
+                position: relative !important;
+                z-index: 5 !important;
+            }
+            
+            /* Mobile optimization */
             @media (max-width: 768px) {
                 .desc_item {
-                    margin: 0 10px;
+                    margin: 0 8px;
                     font-size: 0.9em;
                 }
+                
+                .bg-circle {
+                    width: 100vw;
+                    height: 100vw;
+                    bottom: -11.15%;  /* Changed from -40% */
+                    right: -27.25%;   /* Changed from -30% */
+                    opacity: 0.15; /* Changed from 0.09 */
+                    display: block !important; /* Force display */
+                    visibility: visible !important; /* Ensure visibility */
+                    transform: none;
+                }
+                
+                /* Ensure footer is visible on mobile */
+                #footer {
+                    padding: 8px 0;
+                }
+                
+                /* Fix for mobile browsers that don't support backdrop-filter */
+                @supports not (backdrop-filter: blur(5px)) {
+                    #footer {
+                        background-color: rgba(248, 249, 250, 0.95);
+                    }
+                }
             }
-        </style>`
+        </style>
+        
+        <script>
+            // Enhanced interactive background
+            document.addEventListener('DOMContentLoaded', function() {
+                // Fix z-index for content elements to ensure they overlay the background
+                const contentElements = document.querySelectorAll('.card, .container, .row, section, article, main, .blog-card, .project-card');
+                contentElements.forEach(element => {
+                    if (getComputedStyle(element).position === 'static') {
+                        element.style.position = 'relative';
+                    }
+                    element.style.zIndex = '5';
+                });
+                
+                // Add a global style to ensure proper content overlay
+                const globalStyle = document.createElement('style');
+                globalStyle.textContent = \`
+                    body {
+                        position: relative;
+                        z-index: 1;
+                    }
+                    
+                    .container, .row, .col, .card, section, article, main {
+                        position: relative;
+                        z-index: 5;
+                    }
+                    
+                    .bg-circle-container {
+                        z-index: -1;
+                    }
+                    
+                    /* Force no animation on background circles */
+                    .bg-circle {
+                        animation: none !important;
+                        transition: none !important;
+                        transform: none !important;
+                    }
+                \`;
+                document.head.appendChild(globalStyle);
+                
+                // Image loading verification
+                const bgImage = new Image();
+                bgImage.onload = function() {
+                    console.log('Background image loaded successfully');
+                    document.querySelectorAll('.bg-circle').forEach(circle => {
+                        circle.style.backgroundImage = \`url('./images/ch.jpg')\`;
+                        circle.style.display = 'block';
+                        // Force higher opacity on mobile
+                        if (window.innerWidth <= 768) {
+                            circle.style.opacity = '0.15';
+                            circle.style.visibility = 'visible';
+                        }
+                    });
+                };
+                bgImage.onerror = function() {
+                    console.error('Background image failed to load');
+                    // Fallback to a color if image fails
+                    document.querySelectorAll('.bg-circle').forEach(circle => {
+                        circle.style.backgroundColor = 'rgba(0, 0, 128, 0.1)';
+                        circle.style.backgroundImage = 'none';
+                        circle.style.display = 'block';
+                        circle.style.visibility = 'visible';
+                    });
+                };
+                bgImage.src = './images/ch.jpg';
+                
+                // Make sure all circles have no animation but are visible
+                const bgCircles = document.querySelectorAll('.bg-circle');
+                bgCircles.forEach(circle => {
+                    circle.style.animation = 'none';
+                    circle.style.transform = 'none';
+                    circle.style.transition = 'none';
+                    circle.style.display = 'block';
+                    
+                    // Force visibility especially on mobile
+                    if (window.innerWidth <= 768) {
+                        circle.style.opacity = '0.15';
+                        circle.style.visibility = 'visible';
+                    }
+                });
+            });
+        </script>`
     }
 }
-
 // Define custom elements
 customElements.define('special-header', SpecialHeader);
 customElements.define('required-links', Links);
