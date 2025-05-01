@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,91 +6,250 @@
     <link rel="icon" href="./images/ai.png" type="image/png">
     <required-links></required-links>
     <title>AI-HUB-Career</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="./styling/career.css">
+    <style>
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 56px;
+            left: 0;
+            background: rgb(224, 219, 206); /* Changed to match website theme */
+            padding: 20px 0;
+            z-index: 100;
+            overflow-y: auto; /* Added scrolling */
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .menu .item {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .menu .item a {
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            display: block;
+            padding: 5px 30px;
+            line-height: 60px;
+        }
+
+        .menu .item .sub-menu {
+            background: #3f3759;
+            display: none;
+        }
+
+        .menu .item .sub-menu a {
+            padding-left: 80px;
+        }
+
+        .rotate {
+            transform: rotate(90deg);
+        }
+
+        .menu .item i {
+            margin-right: 15px;
+        }
+
+        .menu .item a .dropdown {
+            position: absolute;
+            right: 0;
+            margin: 20px;
+            transition: 0.3s ease;
+        }
+        .item .sub-btn {
+          color:black;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <special-header></special-header>
-    <h1 id="page-title">Career Catalyts</h1>
-    <h3 id="section_heading">Job Guide</h3>
-    <hr>
-    <div id="cards">
-        <div class="card" style="width: 18rem;">
-            <img src="./images/Jobs.jpeg" class="card-img-top" alt="jobs image">
-            <div class="card-body">
-              <h5 class="card-title">Jobs</h5>
-              <p class="card-text">"Unleash Your 2025 Potential: The Ultimate Fresher’s Career Toolkit!"</p>
-              <a href="blog.html" class="btn btn-primary">Explore</a>
+    
+    <div class="sidebar">
+        <div class="menu">
+            <div class="item">
+                <a class="sub-btn"><i class="fa-solid fa-briefcase"></i>Job Guide
+                    <i class="fas fa-angle-right dropdown"></i>
+                </a>
+                <div class="sub-menu">
+                    <a href="#job-guide" class="sub-item">Interview Tips</a>
+                    <a href="#job-guide" class="sub-item">Resume Building</a>
+                    <a href="#job-guide" class="sub-item">Job Portals</a>
+                </div>
+            </div>
+            <div class="item">
+                <a class="sub-btn"><i class="fa-solid fa-brain"></i>Life Skills
+                    <i class="fas fa-angle-right dropdown"></i>
+                </a>
+                <div class="sub-menu">
+                    <a href="#life-skills" class="sub-item">Quantitative Aptitude</a>
+                    <a href="#life-skills" class="sub-item">Reasoning Ability</a>
+                    <a href="#life-skills" class="sub-item">Verbal Ability</a>
+                </div>
+            </div>
+            <div class="item">
+                <a class="sub-btn"><i class="fa-solid fa-code"></i>Web Development
+                    <i class="fas fa-angle-right dropdown"></i>
+                </a>
+                <div class="sub-menu">
+                    <a href="#web-dev" class="sub-item">HTML</a>
+                    <a href="#web-dev" class="sub-item">CSS</a>
+                    <a href="#web-dev" class="sub-item">JavaScript</a>
+                </div>
             </div>
         </div>
     </div>
-    <h3 id="section_heading">Life Skills</h3>
-    <hr>
-    <div id="cards">
-        <div class="card" style="width: 18rem;">
-            <img src="./images/Quant.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Quantitative Aptitude</h5>
-              <p class="card-text">Mathematical skills and analytical ability which is put to use in every step of life and career</p>
-              <div id="buttons">
-                <a href="#" class="btn btn-primary">Explore</a>
-                <a href="#" download="#" ><i class="fa-solid fa-download"></i></a>
-              </div>
+
+    <div class="main-content">
+        <div id="job-guide" class="content-section">
+            <h1 id="page-title">Career Catalysts</h1>
+            <h3 id="section_heading">Job Guide</h3>
+            <hr>
+            <div id="cards">
+                <div class="card" style="width: 18rem;">
+                    <img src="./images/Jobs.jpeg" class="card-img-top" alt="jobs image">
+                    <div class="card-body">
+                      <h5 class="card-title">Jobs</h5>
+                      <p class="card-text">"Unleash Your 2025 Potential: The Ultimate Fresher’s Career Toolkit!"</p>
+                      <a href="blog.html" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="./images/Reasoning.png" style="height:50%" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Reasoning Ability</h5>
-              <p class="card-text">The ability to use evidence to draw conclusions, make decisions, and solve problems</p>
-              <div id="buttons">
-                <a href="#" class="btn btn-primary">Explore</a>
-                <a href="#" download="#" ><i class="fa-solid fa-download"></i></a>
-              </div>
+        </div>
+        <div id="life-skills" class="content-section">
+            <h3 id="section_heading">Life Skills</h3>
+            <hr>
+            <div id="cards">
+                <div class="card" style="width: 18rem;">
+                    <img src="./images/Quant.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Quantitative Aptitude</h5>
+                      <p class="card-text">Mathematical skills and analytical ability which is put to use in every step of life and career</p>
+                      <div id="buttons">
+                        <a href="#" class="btn btn-primary">Explore</a>
+                        <a href="#" download="#" ><i class="fa-solid fa-download"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" style="width: 18rem;">
+                    <img src="./images/Reasoning.png" style="height:50%" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Reasoning Ability</h5>
+                      <p class="card-text">The ability to use evidence to draw conclusions, make decisions, and solve problems</p>
+                      <div id="buttons">
+                        <a href="#" class="btn btn-primary">Explore</a>
+                        <a href="#" download="#" ><i class="fa-solid fa-download"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" style="width: 18rem;">
+                    <img src="./images/verbal.png" style="height:50%" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Verbal Ability</h5>
+                      <p class="card-text">The ability to understand and use language, including words, written information, and spoken language</p>
+                      <div id="buttons">
+                        <a href="#" class="btn btn-primary">Explore</a>
+                        <a href="#" download="#" ><i class="fa-solid fa-download"></i></a>
+                      </div>
+                    </div>
+                  </div>
             </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="./images/verbal.png" style="height:50%" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Verbal Ability</h5>
-              <p class="card-text">The ability to understand and use language, including words, written information, and spoken language</p>
-              <div id="buttons">
-                <a href="#" class="btn btn-primary">Explore</a>
-                <a href="#" download="#" ><i class="fa-solid fa-download"></i></a>
-              </div>
+        </div>
+        <div id="web-dev" class="content-section">
+            <h3 id="section_heading">Web Development</h3>
+            <hr>
+            <div id="cards">
+                <div class="card" style="width: 18rem;">
+                    <img src="./images/html.png" class="card-img-top" alt="HTML">
+                    <div class="card-body">
+                      <h5 class="card-title">HTML</h5>
+                      <p class="card-text">Learn the fundamentals of HTML - the backbone of web development.</p>
+                      <div id="buttons">
+                        <a href="#" class="btn btn-primary">Explore</a>
+                        <a href="#" download="#"><i class="fa-solid fa-download"></i></a>
+                      </div>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <img src="./images/css.png" class="card-img-top" alt="CSS">
+                    <div class="card-body">
+                      <h5 class="card-title">CSS</h5>
+                      <p class="card-text">Master CSS to style and design beautiful websites.</p>
+                      <div id="buttons">
+                        <a href="#" class="btn btn-primary">Explore</a>
+                        <a href="#" download="#"><i class="fa-solid fa-download"></i></a>
+                      </div>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <img src="./images/javascript.png" class="card-img-top" alt="JavaScript">
+                    <div class="card-body">
+                      <h5 class="card-title">JavaScript</h5>
+                      <p class="card-text">Add interactivity and dynamic features to your websites with JavaScript.</p>
+                      <div id="buttons">
+                        <a href="#" class="btn btn-primary">Explore</a>
+                        <a href="#" download="#"><i class="fa-solid fa-download"></i></a>
+                      </div>
+                    </div>
+                </div>
             </div>
-          </div>
+        </div>
     </div>
-    <h3 id="section_heading">Web Dev</h3>
-    <hr>
-    <div id="cards">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
+
     <special-footer class="footer_list"></special-footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./reuse_elements/HeaderFooter.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.sub-btn').click(function(){
+                $(this).next('.sub-menu').slideToggle();
+                $(this).find('.dropdown').toggleClass('rotate');
+            });
+
+            // Initially show first section and hide others
+            $('.content-section').hide();
+            $('#job-guide').show();
+
+            // Handle sidebar navigation
+            $('.sub-item').click(function(e){
+                e.preventDefault();
+                const target = $(this).attr('href');
+                $('.content-section').hide();
+                $(target).show();
+            });
+        });
+    </script>
 </body>
-</html><
+</html>
 

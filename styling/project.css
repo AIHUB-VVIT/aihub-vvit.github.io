@@ -72,6 +72,48 @@ body {
 
 /* Machine Learning card additional logo */
 
+/* Sidebar styling */
+.sidebar {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding: 20px;
+    border-right: 1px solid #dee2e6;
+    position: fixed;
+    top: 60px;
+}
+
+.sidebar-sticky {
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar-heading {
+    color: #333;
+    padding: 10px 0;
+    border-bottom: 2px solid #007bff;
+    margin-bottom: 15px;
+}
+
+.sidebar .nav-link {
+    color: #666;
+    padding: 8px 16px;
+    margin: 5px 0;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.main-content {
+    margin-left: 16.666667%;
+    padding: 20px;
+    margin-top: 60px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
@@ -85,6 +127,16 @@ body {
         max-width: 207px;
         height: 150px;
         margin: 0 auto;
+    }
+
+    .sidebar {
+        position: relative;
+        min-height: auto;
+        top: 0;
+    }
+    
+    .main-content {
+        margin-left: 0;
     }
 }
 

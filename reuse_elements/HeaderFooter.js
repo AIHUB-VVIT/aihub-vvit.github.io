@@ -16,26 +16,9 @@ class SpecialHeader extends HTMLElement {
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="index.html">Home</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Projects
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
-                                <li><a class="dropdown-item" href="Projects.html">Ongoing Projects</a></li>
-                                <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" href="Projects.html" id="completedProjectsDropdown" aria-expanded="false">
-                                        Completed Projects
-                                        <i class="fas fa-chevron-right submenu-arrow"></i>
-                                    </a>
-                                    <ul class="dropdown-menu submenu" aria-labelledby="completedProjectsDropdown">
-                                        <li><a class="dropdown-item" href="Game.html">Games</a></li>
-                                        <li><a class="dropdown-item" href="Projects.html#ml">Machine Learning</a></li>
-                                        <li><a class="dropdown-item" href="Projects.html#dl">Deep Learning</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Projects.html">Projects</a>
                         </li>
-                        
                         <li class="nav-item">
                             <a class="nav-link" href="blog.html">Blogs</a>
                         </li>
@@ -45,31 +28,12 @@ class SpecialHeader extends HTMLElement {
                         <li class="nav-item">
                             <a class="nav-link" href="Apps.html">Apps</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="careerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Career Catalysts
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="careerDropdown">
-                                <li><a class="dropdown-item" href="Career.html">Job Guide</a></li>
-                                <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" href="Career.html" id="lifeSkillsDropdown" aria-expanded="false">
-                                        Life Skills
-                                        <i class="fas fa-chevron-right submenu-arrow"></i>
-                                    </a>
-                                    <ul class="dropdown-menu submenu" aria-labelledby="lifeSkillsDropdown">
-                                        <li><a class="dropdown-item" href="#">Quantitative Aptitude</a></li>
-                                        <li><a class="dropdown-item" href="#">Reasoning Ability</a></li>
-                                        <li><a class="dropdown-item" href="#">Verbal Ability</a></li>
-                                    </ul>
-                                </li>
-                                <li><a class="dropdown-item" href="Career.html">Web Dev</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Career.html">Career Catalysts</a>
                         </li>
-                        
                         <li class="nav-item">
                             <a class="nav-link" href="News.html">News</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="About.html">People</a>
                         </li>
@@ -77,7 +41,24 @@ class SpecialHeader extends HTMLElement {
                 </div>
             </div>
         </nav>
-        
+
+        <!-- Side Navigation -->
+        <div class="side-nav">
+            <div class="side-nav-content">
+                <div class="menu-item">
+                    <a href="Projects.html" class="menu-title">Ongoing Projects</a>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-title">Completed Projects</div>
+                    <div class="sub-menu">
+                        <a href="Game.html">Games</a>
+                        <a href="Projects.html#ml">Machine Learning</a>
+                        <a href="Projects.html#dl">Deep Learning</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <style>
             /* Dropdown Styling */
             @media (min-width: 992px) {
@@ -134,7 +115,115 @@ class SpecialHeader extends HTMLElement {
                     padding-left: 20px;
                 }
             }
-        </style>`
+
+            .side-nav {
+                height: 100%;
+                width: 250px;
+                position: fixed;
+                top: 56px;
+                left: 0;
+                background: #f8f9fa;
+                padding: 20px 0;
+                box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+                display: none;
+            }
+
+            .side-nav-content {
+                padding: 0 15px;
+            }
+
+            .menu-item {
+                margin: 10px 0;
+            }
+
+            .menu-title {
+                color: #333;
+                font-weight: 500;
+                display: block;
+                padding: 8px 15px;
+                text-decoration: none;
+                transition: 0.3s;
+            }
+
+            .menu-title:hover {
+                background: #e9ecef;
+                color: #007bff;
+            }
+
+            .sub-menu {
+                padding-left: 15px;
+            }
+
+            .sub-menu a {
+                display: block;
+                padding: 8px 15px;
+                color: #666;
+                text-decoration: none;
+                transition: 0.3s;
+            }
+
+            .sub-menu a:hover {
+                background: #e9ecef;
+                color: #007bff;
+            }
+
+            .menu-title i {
+                margin-right: 10px;
+                width: 20px;
+                text-align: center;
+            }
+
+            .menu-item {
+                margin-bottom: 15px;
+            }
+
+            .menu-item .sub-menu {
+                display: none;
+                margin-left: 20px;
+            }
+
+            .menu-item .menu-title:hover + .sub-menu,
+            .menu-item .sub-menu:hover {
+                display: block;
+            }
+
+            /* Show side nav only on Projects page */
+            body.projects-page .side-nav {
+                display: block;
+            }
+
+            @media (max-width: 768px) {
+                .side-nav {
+                    width: 100%;
+                    height: auto;
+                    position: relative;
+                    top: 56px;
+                    box-shadow: none;
+                    border-bottom: 1px solid #dee2e6;
+                }
+            }
+        </style>
+
+        <script>
+            // Add class to body if on Projects page
+            if (window.location.pathname.includes('Projects.html')) {
+                document.body.classList.add('projects-page');
+            }
+
+            // Add submenu toggle functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuTitles = document.querySelectorAll('.menu-title');
+                menuTitles.forEach(title => {
+                    title.addEventListener('click', function(e) {
+                        const subMenu = this.nextElementSibling;
+                        if (subMenu && subMenu.classList.contains('sub-menu')) {
+                            subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
+                        }
+                    });
+                });
+            });
+        </script>
+        `;
     }
 }
 
@@ -382,106 +471,3 @@ class SpecialFooter extends HTMLElement {
 customElements.define('special-footer', SpecialFooter);
 customElements.define('required-links', Links);
 customElements.define('special-header', SpecialHeader);
-
-// Dropdown handling script
-document.addEventListener('DOMContentLoaded', function() {
-    // Function to handle dropdown toggling
-    function setupDropdownToggle(dropdownToggle) {
-        // Remove existing event listeners to prevent multiple bindings
-        dropdownToggle.removeEventListener('click', dropdownClickHandler);
-        
-        // Add click event listener
-        dropdownToggle.addEventListener('click', dropdownClickHandler);
-    }
-
-    // Dropdown click handler
-    function dropdownClickHandler(e) {
-        // Prevent default link behavior
-        e.preventDefault();
-        e.stopPropagation();
-
-        // Close other open dropdowns
-        document.querySelectorAll('.dropdown-toggle').forEach(function(otherToggle) {
-            if (otherToggle !== this) {
-                let otherDropdownMenu = otherToggle.closest('.dropdown').querySelector('.dropdown-menu');
-                otherDropdownMenu.classList.remove('show');
-                otherToggle.setAttribute('aria-expanded', 'false');
-            }
-        }.bind(this));
-
-        // Toggle current dropdown
-        let dropdownMenu = this.closest('.dropdown').querySelector('.dropdown-menu');
-        let isCurrentlyShown = dropdownMenu.classList.contains('show');
-
-        // Close all dropdowns first
-        document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
-            menu.classList.remove('show');
-        });
-        document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
-            toggle.setAttribute('aria-expanded', 'false');
-        });
-
-        // If it wasn't shown, show it
-        if (!isCurrentlyShown) {
-            dropdownMenu.classList.add('show');
-            this.setAttribute('aria-expanded', 'true');
-        }
-    }
-
-    // Setup main dropdowns
-    var mainDropdownToggles = document.querySelectorAll('.navbar .dropdown-toggle');
-    mainDropdownToggles.forEach(setupDropdownToggle);
-
-    // Handle submenu dropdowns
-    var dropdownSubmenus = document.querySelectorAll('.dropdown-submenu');
-    dropdownSubmenus.forEach(function(submenu) {
-        var dropdownToggle = submenu.querySelector('.dropdown-toggle');
-        var dropdownMenu = submenu.querySelector('.submenu');
-        
-        // Desktop hover effect
-        submenu.addEventListener('mouseenter', function() {
-            if (window.innerWidth >= 992) {
-                dropdownMenu.style.display = 'block';
-            }
-        });
-        
-        submenu.addEventListener('mouseleave', function() {
-            if (window.innerWidth >= 992) {
-                dropdownMenu.style.display = 'none';
-            }
-        });
-        
-        // Mobile touch handling
-        dropdownToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Close all other open submenus first
-            document.querySelectorAll('.dropdown-submenu .submenu').forEach(function(menu) {
-                if (menu !== dropdownMenu) {
-                    menu.style.display = 'none';
-                }
-            });
-            
-            // Toggle submenu visibility
-            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-        });
-    });
-
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', function(e) {
-        // Check if click is outside dropdowns
-        if (!e.target.closest('.navbar-nav')) {
-            // Close all dropdowns
-            document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
-                menu.classList.remove('show');
-            });
-            document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
-                toggle.setAttribute('aria-expanded', 'false');
-            });
-            document.querySelectorAll('.dropdown-submenu .submenu').forEach(function(menu) {
-                menu.style.display = 'none';
-            });
-        }
-    });
-});
