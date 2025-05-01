@@ -1,18 +1,147 @@
-.image-container {
+body {
+    background-color: rgb(240, 238, 238);
+    font-family: Arial, sans-serif;
+}
+
+/* Container styling */
+.container {
     display: flex;
-    justify-content: first baseline;
-    height: 100vh;
-    gap: 4.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 3rem;
 }
-.diamond-img {
-    width: 16.2rem; /* Adjust size */
-    height: 16rem; /* Make it square */
-    border: 0.65rem solid rgb(0, 0, 0); /* Add border */
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* Diamond shape */
-    transition: transform 0.3s ease-in , box-shadow 0.3s ease-in-out;
-    object-fit: fill; /* Ensures the image fits inside */
+
+/* Card styling */
+.card {
+    width: 207px; /* Fixed width */
+    height: 150px; /* Fixed height */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Prevents overflow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative; /* Allows overlay elements */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.diamond-img:hover {
-    transform: scale(1.1) rotate(0.5deg); /* Slight enlarge + rotate */
-    box-shadow: 0px 50.6rem 1rem rgba(0, 0, 0, 0.3); /* Add shadow */
+
+/* Image container */
+.card-image-container {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    overflow: hidden;
+}
+
+/* Ensuring the image fills but doesn't zoom */
+.card img {
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: block;
+}
+
+/* Card body styling */
+.card-body {
+    padding: 10px;
+    text-align: center;
+    z-index: 2; /* Ensures text is above the image */
+    position: relative;
+}
+
+/* Hover effect */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px rgb(239, 116, 116);
+}
+
+/* Prevent image from zooming when hovering */
+.card:hover img {
+    transform: none;
+}
+
+/* Machine Learning card additional logo */
+
+/* Sidebar styling */
+.sidebar {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding: 20px;
+    border-right: 1px solid #dee2e6;
+    position: fixed;
+    top: 60px;
+}
+
+.sidebar-sticky {
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar-heading {
+    color: #333;
+    padding: 10px 0;
+    border-bottom: 2px solid #007bff;
+    margin-bottom: 15px;
+}
+
+.sidebar .nav-link {
+    color: #666;
+    padding: 8px 16px;
+    margin: 5px 0;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.main-content {
+    margin-left: 16.666667%;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        justify-content: center;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 207px;
+        height: 150px;
+        margin: 0 auto;
+    }
+
+    .sidebar {
+        position: relative;
+        min-height: auto;
+        top: 0;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-text {
+        font-size: 1.2rem;
+    }
 }

@@ -6,20 +6,248 @@
     <link rel="icon" href="./images/ai.png" type="image/png">
     <required-links></required-links>
     <link rel="stylesheet" href="./styling/project.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <title>AI-HUB-About</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f4f7fa;
+        }
+        .sidebar {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            height: calc(100vh - 60px);
+            width: 60px;
+            background-color: #ffffff;
+            color: #2c3e50;
+            transition: all 0.3s ease;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            z-index: 1000;
+        }
+        .sidebar:hover {
+            width: 250px;
+        }
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-menu a, .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-right: 15px;
+            text-decoration: none;
+            color: #2c3e50;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .sidebar a.active {
+            width:100%;
+        }
+        .sidebar-menu a i, .dropdown-item i {
+            width: 20px;
+            text-align: center;
+            margin-right: 8px;
+        }
+        .menu-text {
+            margin-left: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s;
+        }
+        .sidebar:hover .menu-text {
+            opacity: 1;
+            visibility: visible;
+        }
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            padding-left: 0;  /* Remove left padding */
+            background-color: #f8f9fa;
+            border-left: none; /* Remove left border */
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+        .submenu li {
+            list-style: none; /* Remove dots */
+            padding: 0;
+            position: relative;
+        }
+        .submenu li a {
+            padding: 12px 15px 12px 35px; /* Adjust padding to match Events.html */
+            display: block;
+            position: relative;
+        }
+     
+        .submenu.show, .sidebar:hover .submenu {
+            max-height: 300px;
+            opacity: 1;
+        }
+        .dropdown-item {
+            position: relative;
+            cursor: default; /* Remove pointer cursor */
+            color: #7f8c8d; /* Make text appear disabled */
+            user-select: none; /* Prevent text selection */
+        }
+        .sidebar-menu > li {
+            margin: 5px 0;
+        }
+        .main-content {
+            margin-left: 60px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .sidebar:hover ~ .main-content {
+            margin-left: 250px;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 60px;
+            }
+            .main-content {
+                margin-left: 60px;
+            }
+        }
+    </style>
 </head>
 <body>
     <special-header></special-header>
-    <h1 id="page-title">Projects</h1>
-    <hr>
-    <div class="image-container">
-        <a href="Game.html"><img src="./images/Games-2.png" alt="Diamond Image" class="diamond-img"></a>
-        <a href=""><img src="./images/j4.png" alt="Diamond Image" class="diamond-img"></div></a>
+    <div class="sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#ongoing-content" class="active" data-content="ongoing-content">
+                    <i class="fas fa-tasks"></i>
+                    <span class="menu-text">Ongoing Projects</span>
+                </a>
+            </li>
+            <li>
+                <div class="dropdown-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span class="menu-text">Completed Projects</span>
+                </div>
+                <ul class="submenu">
+                    <li><a href="#games-content" data-content="games-content">
+                        <i class="fas fa-gamepad"></i>
+                        <span class="menu-text">Games</span>
+                    </a></li>
+                    <li><a href="#ml-content" data-content="ml-content">
+                        <i class="fas fa-brain"></i>
+                        <span class="menu-text">Machine Learning</span>
+                    </a></li>
+                    <li><a href="#dl-content" data-content="dl-content">
+                        <i class="fas fa-network-wired"></i>
+                        <span class="menu-text">Deep Learning</span>
+                    </a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
-        <special-footer></special-footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="./reuse_elements/HeaderFooter.js"></script>
-    </body>
-    </html>
+
+    <div class="main-content">
+        <div class="content-section active" id="ongoing-content">
+            <h1 id="page-title">Ongoing Projects</h1>
+            <hr><br><center>'&nbsp;Coming Soon&nbsp;'</center><br><br>
+        </div>
+
+        <div class="content-section" id="games-content">
+            <h1 id="page-title">Games Projects</h1>
+            <hr>
+            <div class="card">
+                <div id="card-image">
+                    <a href="./Game.html"> <img src="./images/game2.jpg" alt="..."></a>
+                </div>  
+            </div>
+        </div>
+
+        <div class="content-section" id="ml-content">
+            <h1 id="page-title">Machine Learning Projects</h1>
+            <hr>
+            <div class="card">
+                <div id="card-image">
+                    <img src="./images/ml1.png" alt="...">
+                </div>  
+            </div>
+        </div>
+
+        <div class="content-section" id="dl-content">
+            <h1 id="page-title">Deep Learning Projects</h1>
+            <hr>
+            <div class="card">
+                <div id="card-image">
+                    <img src="./images/dl1.png" alt="...">
+                </div>  
+            </div>
+        </div>
+    </div>
+
+    <special-footer></special-footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./reuse_elements/HeaderFooter.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.sidebar-menu a').on('click', function(e) {
+                e.preventDefault();
+                var targetContent = $(this).attr('data-content');
+                $('.sidebar-menu a').removeClass('active');
+                $(this).addClass('active');
+                if (targetContent) {
+                    $('.content-section').removeClass('active');
+                    $('#' + targetContent).addClass('active');
+                }
+            });
+
+            $('.submenu a').on('click', function(e) {
+                e.stopPropagation();
+                var targetContent = $(this).attr('data-content');
+                $('.submenu a').removeClass('active');
+                $(this).addClass('active');
+                if (targetContent) {
+                    $('.content-section').removeClass('active');
+                    $('#' + targetContent).addClass('active');
+                }
+            });
+
+            $('.sidebar').on('mouseleave', function() {
+                if ($(this).width() <= 60) {
+                    $('.submenu').removeClass('show');
+                }
+            });
+
+            // Remove click functionality for dropdown-item
+            $('.dropdown-item').off('click');
+            
+            // Update hover behavior for only submenu items
+            $('.sidebar-menu > li').hover(
+                function() {
+                    if ($('.sidebar').width() > 60) {
+                        $(this).find('.submenu').addClass('show');
+                    }
+                },
+                function() {
+                    if ($('.sidebar').width() > 60) {
+                        $(this).find('.submenu').removeClass('show');
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+</html>

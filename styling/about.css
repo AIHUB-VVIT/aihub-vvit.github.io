@@ -54,17 +54,9 @@
 }
 
 #cards > .card {
-  /* flex: 1 1 calc(25% - 2rem);
-  max-width: calc(25% - 2rem);  */
   max-width: 207px;
 }
 
-/* @media (max-width: 600px) {
-  #cards > .card {
-    flex: 1 1 calc(50% - 1rem);
-    max-width: calc(70% - 1rem);
-  }
-} */
 .card:hover {
   transform: scale(1.05);
   box-shadow: 0px 0px 15px rgb(239, 116, 116);
